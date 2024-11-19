@@ -1,8 +1,13 @@
-import paramiko
+# commands/bash.py
+
 from discord.ext import commands
+import paramiko
 from database import Database
 
 db = Database("servers.db")
+
+# Store active SSH sessions with metadata
+active_sessions = {}
 
 @commands.command(name="bash")
 async def bash_command(ctx, server_name, *command):
@@ -10,25 +15,43 @@ async def bash_command(ctx, server_name, *command):
     if not server:
         await ctx.send("Server not found.")
         return
-    # Debugging: Print the retrieved values
-    print(f"Debug: Retrieved server details: {server}")
 
     try:
-        ssh = paramiko.SSHClient()
-        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(server[1], username=server[2], password=server[3])
-
-        if command:
-            stdin, stdout, stderr = ssh.exec_command(" ".join(command))
-            output = stdout.read().decode()
-            await ctx.send(f"Command output:\n```\n{output}\n```")
+        if not command:
+            # Open an interactive SSH session
+            if ctx.author.id in active_sessions:
+                await ctx.send("You already have an active session. Use !bashend to close it first.")
+                return
+            
+            ssh = paramiko.SSHClient()
+            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            ssh.connect(server[1], username=server[2], password=server[3])
+            active_sessions[ctx.author.id] = {'ssh': ssh, 'interactive': True}
+            await ctx.send(f"Interactive SSH session opened with {server_name}. Send commands directly in the chat.")
         else:
-            await ctx.send("Interactive SSH is not yet implemented.")
-        
-        ssh.close()
+            # Execute a single command if no interactive session is active
+            if ctx.author.id not in active_sessions:
+                ssh = paramiko.SSHClient()
+                ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+                ssh.connect(server[1], username=server[2], password=server[3])
+                stdin, stdout, stderr = ssh.exec_command(" ".join(command))
+                output = stdout.read().decode()
+                ssh.close()
+                await ctx.send(f"Command output:\n```\n{output}\n```")
+            else:
+                # Execute the command in the active session
+                ssh = active_sessions[ctx.author.id]['ssh']
+                stdin, stdout, stderr = ssh.exec_command(" ".join(command))
+                output = stdout.read().decode()
+                await ctx.send(f"Command output:\n```\n{output}\n```")
     except Exception as e:
-        await ctx.send(f"Error connecting to the server: {str(e)}")
+        await ctx.send(f"Error: {str(e)}")
 
 @commands.command(name="bashend")
 async def bashend_command(ctx):
-    await ctx.send("Interactive SSH session closed.")
+    session = active_sessions.pop(ctx.author.id, None)
+    if session:
+        session['ssh'].close()
+        await ctx.send("SSH session closed.")
+    else:
+        await ctx.send("No active SSH session to close.")
