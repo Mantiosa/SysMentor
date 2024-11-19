@@ -10,6 +10,8 @@ async def bash_command(ctx, server_name, *command):
     if not server:
         await ctx.send("Server not found.")
         return
+    # Debugging: Print the retrieved values
+    print(f"Debug: Retrieved server details: {server}")
 
     try:
         ssh = paramiko.SSHClient()

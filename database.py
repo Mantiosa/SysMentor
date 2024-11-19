@@ -1,4 +1,12 @@
 import sqlite3
+import os
+from cryptography.fernet import Fernet
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY").encode()  # Load the encryption key from .env
+cipher = Fernet(ENCRYPTION_KEY)
 
 class Database:
     def __init__(self, db_name):
@@ -18,26 +26,38 @@ class Database:
         """
         self.conn.execute(query)
         self.conn.commit()
+    
+    def list_servers(self, user_id):
+        query = "SELECT name, ip FROM servers WHERE user_id = ?"
+        return self.conn.execute(query, (user_id,)).fetchall()
+
+    def encrypt_password(self, plaintext_password):
+        return cipher.encrypt(plaintext_password.encode()).decode()
+
+    def decrypt_password(self, encrypted_password):
+        return cipher.decrypt(encrypted_password.encode()).decode()
 
     def add_server(self, user_id, name, ip, ssh_user, ssh_password):
+        encrypted_password = self.encrypt_password(ssh_password)
         try:
             query = "INSERT INTO servers (user_id, name, ip, ssh_user, ssh_password) VALUES (?, ?, ?, ?, ?)"
-            self.conn.execute(query, (user_id, name, ip, ssh_user, ssh_password))
+            self.conn.execute(query, (user_id, name, ip, ssh_user, encrypted_password))
             self.conn.commit()
             return True
         except sqlite3.IntegrityError:
             return False
 
-    def list_servers(self, user_id):
-        query = "SELECT name, ip FROM servers WHERE user_id = ?"
-        return self.conn.execute(query, (user_id,)).fetchall()
-
+    def get_server(self, user_id, name):
+        query = "SELECT name, ip, ssh_user, ssh_password FROM servers WHERE user_id = ? AND name = ?"
+        result = self.conn.execute(query, (user_id, name)).fetchone()
+        if result:
+            name, ip, ssh_user, encrypted_password = result
+            decrypted_password = self.decrypt_password(encrypted_password)
+            return (name, ip, ssh_user, decrypted_password)
+        return None
+    
     def delete_server(self, user_id, name):
         query = "DELETE FROM servers WHERE user_id = ? AND name = ?"
         self.conn.execute(query, (user_id, name))
         self.conn.commit()
         return self.conn.total_changes > 0
-
-    def get_server(self, user_id, name):
-        query = "SELECT * FROM servers WHERE user_id = ? AND name = ?"
-        return self.conn.execute(query, (user_id, name)).fetchone()
