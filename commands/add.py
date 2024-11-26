@@ -1,4 +1,5 @@
 import hashlib
+import discord
 from discord.ext import commands
 from database import Database
 
@@ -17,4 +18,5 @@ async def add_command(ctx, name, ip, ssh_user, ssh_password):
             await ctx.send("I don't have permission to delete messages. Please delete your command manually.")
     else:
         await ctx.send("Server already exists.")
+
 

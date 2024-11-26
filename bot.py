@@ -20,7 +20,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 from commands.bash import active_sessions
 
 # Load commands from other files
-from commands import ask, add, list, delete, bash
+from commands import ask, add, list, delete, bash, commands
 
 bot.add_command(ask.ask_command)
 bot.add_command(add.add_command)
@@ -28,6 +28,7 @@ bot.add_command(list.list_command)  # Fixed to import the correct 'list' command
 bot.add_command(delete.delete_command)
 bot.add_command(bash.bash_command)
 bot.add_command(bash.bashend_command)
+bot.add_command(commands.commands_command)
 
 # Event handler for interactive SSH sessions
 @bot.event
