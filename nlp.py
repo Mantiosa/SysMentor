@@ -1,26 +1,41 @@
-from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
-import torch
+from sentence_transformers import SentenceTransformer, util
 import json
 
 class TaskFinder:
-    def __init__(self, tasks_file="tasks.json", model_dir="./fine_tuned_model"):
-        self.tokenizer = DistilBertTokenizer.from_pretrained(model_dir)
-        self.model = DistilBertForSequenceClassification.from_pretrained(model_dir)
-        self.tasks = self.load_tasks(tasks_file)
+    def __init__(self, tasks_file):
+        # Load the SBERT model
+        self.model = SentenceTransformer('all-MiniLM-L6-v2')
 
-    def load_tasks(self, tasks_file):
-        with open(tasks_file, "r") as file:
-            return json.load(file)
+        # Load the tasks from the JSON file
+        with open(tasks_file, "r") as f:
+            self.tasks = json.load(f)
+
+        # Precompute embeddings for all tasks (combine `question` and `tags`)
+        self.task_embeddings = [
+            self.model.encode(task["question"] + " " + " ".join(task["tags"]))
+            for task in self.tasks
+        ]
 
     def find_best_match(self, query):
-        # Tokenize the input query
-        inputs = self.tokenizer(query, return_tensors="pt", truncation=True)
+        """
+        Find the best matching task for a given query using SBERT.
+        """
+        try:
+            # Encode the user query
+            query_embedding = self.model.encode(query)
 
-        # Get predictions
-        with torch.no_grad():
-            outputs = self.model(**inputs)
-            logits = outputs.logits
-            predicted_class = torch.argmax(logits, dim=1).item()
+            # Compute similarity scores
+            similarities = [
+                util.pytorch_cos_sim(query_embedding, task_emb)[0][0]
+                for task_emb in self.task_embeddings
+            ]
 
-        # Return the matched task
-        return self.tasks[predicted_class]
+            # Find the task with the highest similarity
+            best_match_idx = similarities.index(max(similarities))
+            best_task = self.tasks[best_match_idx]
+
+            # Return the best matching task
+            return best_task
+        except Exception as e:
+            print(f"Error finding best match: {e}")
+            return None

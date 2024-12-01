@@ -1,302 +1,303 @@
 [
     {
-        "id": 1,
+        "id": 0,
         "tags": ["restart", "service", "systemd"],
         "question": "How do I restart a service?",
         "answer": "Use the command: `sudo systemctl restart <service_name>`."
     },
     {
-        "id": 2,
+        "id": 1,
         "tags": ["disk", "space", "df"],
         "question": "How do I check disk space usage?",
         "answer": "Use the command: `df -h`."
     },
     {
-        "id": 3,
-        "tags": ["cpu", "usage", "top", "htop"],
+        "id": 2,
+        "tags": ["cpu", "usage", "top", "htop", "central processing unit"],
         "question": "How do I monitor CPU usage?",
         "answer": "Use the command: `top` or `htop`."
     },
     {
-        "id": 4,
+        "id": 3,
         "tags": ["memory", "ram", "usage", "free"],
         "question": "How do I check memory usage?",
         "answer": "Use the command: `free -h`."
     },
     {
-        "id": 5,
+        "id": 4,
         "tags": ["ip", "address", "network"],
         "question": "How do I find my IP address?",
         "answer": "Use the command: `ip a` or `ifconfig`."
     },
     {
-        "id": 6,
+        "id": 5,
         "tags": ["hostname", "change"],
         "question": "How do I change the hostname?",
         "answer": "Use the command: `sudo hostnamectl set-hostname <new_hostname>`."
     },
     {
-        "id": 7,
+        "id": 6,
         "tags": ["users", "add", "delete"],
         "question": "How do I add or delete a user?",
         "answer": "To add a user: `sudo adduser <username>`.\nTo delete a user: `sudo deluser <username>`."
     },
     {
-        "id": 8,
+        "id": 7,
         "tags": ["permissions", "chmod"],
         "question": "How do I change file permissions?",
         "answer": "Use the command: `chmod <permissions> <file>`."
     },
     {
-        "id": 9,
+        "id": 8,
         "tags": ["process", "kill", "pid"],
         "question": "How do I kill a process?",
         "answer": "Use the command: `kill <PID>` or `kill -9 <PID>` for force."
     },
     {
-        "id": 10,
+        "id": 9,
         "tags": ["update", "upgrade", "apt"],
         "question": "How do I update and upgrade packages?",
         "answer": "Use the commands: `sudo apt update && sudo apt upgrade`."
     },
     {
-        "id": 11,
+        "id": 10,
         "tags": ["log", "files", "journalctl"],
         "question": "How do I view system logs?",
         "answer": "Use the command: `journalctl` or view log files in `/var/log`."
     },
     {
-        "id": 12,
+        "id": 11,
         "tags": ["ssh", "connect", "remote"],
         "question": "How do I connect to a remote server via SSH?",
         "answer": "Use the command: `ssh <user>@<host>`."
     },
     {
-        "id": 13,
+        "id": 12,
         "tags": ["firewall", "ufw", "rules"],
         "question": "How do I manage firewall rules with UFW?",
         "answer": "To allow a port: `sudo ufw allow <port>`.\nTo deny a port: `sudo ufw deny <port>`."
     },
     {
-        "id": 14,
+        "id": 13,
         "tags": ["cron", "jobs", "schedule"],
         "question": "How do I schedule a cron job?",
         "answer": "Use the command: `crontab -e` and add your job in the format: `* * * * * <command>`."
     },
     {
-        "id": 15,
+        "id": 14,
         "tags": ["disk", "usage", "du"],
         "question": "How do I check disk usage of a folder?",
         "answer": "Use the command: `du -sh <folder>`."
     },
     {
-        "id": 16,
+        "id": 15,
         "tags": ["file", "search", "find"],
         "question": "How do I search for a file?",
         "answer": "Use the command: `find /path/to/search -name <filename>`."
     },
     {
-        "id": 17,
+        "id": 16,
         "tags": ["package", "install", "apt"],
         "question": "How do I install a package?",
         "answer": "Use the command: `sudo apt install <package_name>`."
     },
     {
-        "id": 18,
+        "id": 17,
         "tags": ["ssh", "keys", "generate"],
         "question": "How do I generate SSH keys?",
         "answer": "Use the command: `ssh-keygen -t rsa -b 4096`."
     },
     {
-        "id": 19,
+        "id": 18,
         "tags": ["services", "list", "systemctl"],
         "question": "How do I list all running services?",
         "answer": "Use the command: `systemctl list-units --type=service`."
     },
     {
-        "id": 20,
+        "id": 19,
         "tags": ["sudo", "permissions"],
         "question": "How do I give a user sudo permissions?",
         "answer": "Add the user to the sudo group: `sudo usermod -aG sudo <username>`."
     },
     {
-        "id": 21,
+        "id": 20,
         "tags": ["alias", "command"],
         "question": "How do I create an alias for a command?",
         "answer": "Add the alias in your shell configuration file (e.g., `~/.bashrc`): `alias <name>='<command>'`."
     },
     {
-        "id": 22,
+        "id": 21,
         "tags": ["process", "monitor", "ps"],
         "question": "How do I monitor running processes?",
         "answer": "Use the command: `ps aux`."
     },
     {
-        "id": 23,
+        "id": 22,
         "tags": ["mount", "drive"],
         "question": "How do I mount a drive?",
         "answer": "Use the command: `mount <device> <mount_point>`."
     },
     {
-        "id": 24,
+        "id": 23,
         "tags": ["package", "remove", "apt"],
         "question": "How do I remove a package?",
         "answer": "Use the command: `sudo apt remove <package_name>`."
     },
     {
-        "id": 25,
+        "id": 24,
         "tags": ["docker", "containers", "list"],
         "question": "How do I list running Docker containers?",
         "answer": "Use the command: `docker ps`."
     },
     {
-        "id": 26,
+        "id": 25,
         "tags": ["environment", "variables", "export"],
         "question": "How do I set environment variables?",
         "answer": "Use the command: `export VAR_NAME=value` to set an environment variable temporarily."
     },
     {
-        "id": 27,
+        "id": 26,
         "tags": ["kernel", "version", "uname"],
         "question": "How do I check the Linux kernel version?",
         "answer": "Use the command: `uname -r`."
     },
     {
-        "id": 28,
+        "id": 27,
         "tags": ["file", "permissions", "ownership", "chown"],
         "question": "How do I change the ownership of a file?",
         "answer": "Use the command: `chown <user>:<group> <file>`."
     },
     {
-        "id": 29,
+        "id": 28,
         "tags": ["process", "background", "jobs"],
         "question": "How do I run a process in the background?",
         "answer": "Add `&` at the end of the command, e.g., `command &`."
     },
     {
-        "id": 30,
+        "id": 29,
         "tags": ["logs", "tail", "view"],
         "question": "How do I view the last few lines of a log file?",
         "answer": "Use the command: `tail -n <number_of_lines> <file>`."
     },
     {
-        "id": 31,
+        "id": 30,
         "tags": ["crash", "dmesg", "errors"],
         "question": "How do I check for kernel errors or crashes?",
         "answer": "Use the command: `dmesg`."
     },
     {
-        "id": 32,
+        "id": 31,
         "tags": ["network", "ping", "connectivity"],
         "question": "How do I check network connectivity to a host?",
         "answer": "Use the command: `ping <host>`."
     },
     {
-        "id": 33,
+        "id": 32,
         "tags": ["network", "ports", "open", "netstat"],
         "question": "How do I check for open network ports?",
         "answer": "Use the command: `netstat -tuln` or `ss -tuln`."
     },
     {
-        "id": 34,
+        "id": 33,
         "tags": ["disk", "partition", "fdisk"],
         "question": "How do I list disk partitions?",
         "answer": "Use the command: `sudo fdisk -l`."
     },
     {
-        "id": 35,
+        "id": 34,
         "tags": ["disk", "usage", "iotop"],
         "question": "How do I monitor disk usage in real-time?",
         "answer": "Use the command: `iotop`."
     },
     {
-        "id": 36,
+        "id": 35,
         "tags": ["network", "bandwidth", "monitor", "iftop"],
         "question": "How do I monitor network bandwidth usage?",
         "answer": "Use the command: `iftop`."
     },
     {
-        "id": 37,
+        "id": 36,
         "tags": ["archive", "extract", "tar"],
         "question": "How do I extract a tar.gz file?",
         "answer": "Use the command: `tar -xvzf <file.tar.gz>`."
     },
     {
-        "id": 38,
+        "id": 37,
         "tags": ["archive", "compress", "gzip"],
         "question": "How do I compress a file into a tar.gz archive?",
         "answer": "Use the command: `tar -cvzf <archive_name.tar.gz> <file_or_directory>`."
     },
     {
-        "id": 39,
+        "id": 38,
         "tags": ["package", "update", "yum"],
         "question": "How do I update packages using YUM?",
         "answer": "Use the command: `sudo yum update`."
     },
     {
-        "id": 40,
+        "id": 39,
         "tags": ["services", "stop", "systemctl"],
         "question": "How do I stop a service?",
         "answer": "Use the command: `sudo systemctl stop <service_name>`."
     },
     {
-        "id": 41,
+        "id": 40,
         "tags": ["services", "status", "systemctl"],
         "question": "How do I check the status of a service?",
         "answer": "Use the command: `sudo systemctl status <service_name>`."
     },
     {
-        "id": 42,
+        "id": 41,
         "tags": ["files", "move", "mv"],
         "question": "How do I move a file to another directory?",
         "answer": "Use the command: `mv <source> <destination>`."
     },
     {
-        "id": 43,
+        "id": 42,
         "tags": ["files", "copy", "cp"],
         "question": "How do I copy a file?",
         "answer": "Use the command: `cp <source> <destination>`."
     },
     {
-        "id": 44,
+        "id": 43,
         "tags": ["files", "delete", "rm"],
         "question": "How do I delete a file?",
         "answer": "Use the command: `rm <file>`."
     },
     {
-        "id": 45,
+        "id": 44,
         "tags": ["directory", "create", "mkdir"],
         "question": "How do I create a new directory?",
         "answer": "Use the command: `mkdir <directory_name>`."
     },
     {
-        "id": 46,
+        "id": 45,
         "tags": ["directory", "delete", "rmdir"],
         "question": "How do I delete an empty directory?",
         "answer": "Use the command: `rmdir <directory_name>`."
     },
     {
-        "id": 47,
+        "id": 46,
         "tags": ["directory", "delete", "recursive", "rm"],
         "question": "How do I delete a directory with its contents?",
         "answer": "Use the command: `rm -r <directory_name>`."
     },
     {
-        "id": 48,
+        "id": 47,
         "tags": ["time", "sync", "ntp"],
         "question": "How do I synchronize system time?",
         "answer": "Use the command: `sudo timedatectl set-ntp true`."
     },
     {
-        "id": 49,
+        "id": 48,
         "tags": ["files", "view", "cat"],
         "question": "How do I view the contents of a file?",
         "answer": "Use the command: `cat <file>`."
     },
     {
-        "id": 50,
-        "tags": ["files", "edit", "nano", "vim"],
-        "question": "How do I edit a file?",
-        "answer": "Use the command: `nano <file>` or `vim <file>`."
+        "id": 49,
+        "tags": ["files", "touch", "create", "empty"],
+        "question": "How do I create an empty file?",
+        "answer": "Use the command: `touch <name>`."
     }
+    
 ]
