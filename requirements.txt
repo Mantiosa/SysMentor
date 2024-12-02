@@ -6,3 +6,4 @@ transformers
 torch
 scikit-learn
 numpy<2.0
+sentence-transformers
