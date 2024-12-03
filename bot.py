@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from discord.ext import commands
 import discord
+from discord.ext.commands import Bot, CommandNotFound
 
 # Load environment variables
 load_dotenv()
@@ -30,6 +31,13 @@ bot.add_command(bash.bash_command)
 bot.add_command(bash.bashend_command)
 bot.add_command(commands.commands_command)
 
+# Handle invalid commands
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, CommandNotFound):  # Use CommandNotFound explicitly
+        await ctx.send("Invalid command. To check available commands, use `!commands`.")
+    else:
+        await ctx.send(f"An error occurred: {str(error)}")
 # Event handler for interactive SSH sessions
 @bot.event
 async def on_message(message):
