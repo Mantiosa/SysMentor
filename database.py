@@ -21,6 +21,7 @@ class Database:
             ip TEXT,
             ssh_user TEXT,
             ssh_password TEXT,
+            port INTEGER DEFAULT 22, -- Add port field with default 22
             PRIMARY KEY (user_id, name)
         )
         """
@@ -37,10 +38,10 @@ class Database:
     def decrypt_password(self, encrypted_password):
         return cipher.decrypt(encrypted_password.encode()).decode()
 
-    def add_server(self, user_id, name, ip, ssh_user, ssh_password):
+    def add_server(self, user_id, name, ip, ssh_user, ssh_password, port=22):
         encrypted_password = self.encrypt_password(ssh_password)
         try:
-            query = "INSERT INTO servers (user_id, name, ip, ssh_user, ssh_password) VALUES (?, ?, ?, ?, ?)"
+            query = "INSERT INTO servers (user_id, name, ip, ssh_user, ssh_password, port) VALUES (?, ?, ?, ?, ?, ?)"
             self.conn.execute(query, (user_id, name, ip, ssh_user, encrypted_password))
             self.conn.commit()
             return True
@@ -48,12 +49,12 @@ class Database:
             return False
 
     def get_server(self, user_id, name):
-        query = "SELECT name, ip, ssh_user, ssh_password FROM servers WHERE user_id = ? AND name = ?"
+        query = "SELECT name, ip, ssh_user, ssh_password, port FROM servers WHERE user_id = ? AND name = ?"
         result = self.conn.execute(query, (user_id, name)).fetchone()
         if result:
-            name, ip, ssh_user, encrypted_password = result
+            name, ip, ssh_user, encrypted_password, port = result
             decrypted_password = self.decrypt_password(encrypted_password)
-            return (name, ip, ssh_user, decrypted_password)
+            return (name, ip, ssh_user, decrypted_password, port)
         return None
     
     def delete_server(self, user_id, name):

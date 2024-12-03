@@ -6,7 +6,7 @@ from database import Database
 db = Database("servers.db")
 
 @commands.command(name="add")
-async def add_command(ctx, name, ip, ssh_user, ssh_password):
+async def add_command(ctx, name, ip, ssh_user, ssh_password, port: int = 22):
     """
     Adds a server to the database after simple validation.
     """
@@ -34,8 +34,8 @@ async def add_command(ctx, name, ip, ssh_user, ssh_password):
         return
 
     
-    if db.add_server(ctx.author.id, name, ip, ssh_user, ssh_password):
-        await ctx.send(f"Server {name} added successfully!")
+    if db.add_server(ctx.author.id, name, ip, ssh_user, ssh_password, port):
+        await ctx.send(f"Server '{name}' added successfully on port {port}!")
         # Delete the user's original message
         try:
             await ctx.message.delete()
