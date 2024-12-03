@@ -35,14 +35,14 @@ async def bash_command(ctx, server_name, *command):
                 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                 ssh.connect(server[1], username=server[2], password=server[3])
                 stdin, stdout, stderr = ssh.exec_command(" ".join(command))
-                output = stdout.read().decode()
+                output = stdout.read().decode() + stderr.read().decode() 
                 ssh.close()
                 await ctx.send(f"Command output:\n```\n{output}\n```")
             else:
                 # Execute the command in the active session
                 ssh = active_sessions[ctx.author.id]['ssh']
                 stdin, stdout, stderr = ssh.exec_command(" ".join(command))
-                output = stdout.read().decode()
+                output = stdout.read().decode() + stderr.read().decode()
                 await ctx.send(f"Command output:\n```\n{output}\n```")
     except Exception as e:
         await ctx.send(f"Error: {str(e)}")
