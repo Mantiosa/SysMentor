@@ -2,8 +2,6 @@ discord.py==2.0.0
 paramiko==2.11.0
 python-dotenv==1.0.0
 cryptography==41.0.1
-transformers
 torch
-scikit-learn
 numpy<2.0
 sentence-transformers
