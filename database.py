@@ -42,7 +42,7 @@ class Database:
         encrypted_password = self.encrypt_password(ssh_password)
         try:
             query = "INSERT INTO servers (user_id, name, ip, ssh_user, ssh_password, port) VALUES (?, ?, ?, ?, ?, ?)"
-            self.conn.execute(query, (user_id, name, ip, ssh_user, encrypted_password))
+            self.conn.execute(query, (user_id, name, ip, ssh_user, encrypted_password, port))
             self.conn.commit()
             return True
         except sqlite3.IntegrityError:
