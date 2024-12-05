@@ -13,9 +13,9 @@
     },
     {
         "id": 2,
-        "tags": ["cpu", "usage", "top", "htop", "central processing unit"],
+        "tags": ["cpu", "usage", "top", "central processing unit"],
         "question": "How do I monitor CPU usage?",
-        "answer": "Use the command: `top` or `htop`."
+        "answer": "Use the command: `top -b -n 1 | head -n 20`."
     },
     {
         "id": 3,
