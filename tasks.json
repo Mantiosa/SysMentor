@@ -19,7 +19,7 @@
     },
     {
         "id": 3,
-        "tags": ["memory", "ram", "usage", "free"],
+        "tags": ["memory", "ram", "usage", "free", "random access memory"],
         "question": "How do I check memory usage?",
         "answer": "Use the command: `free -h`."
     },
