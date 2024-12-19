@@ -1,75 +1,59 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-import torch
-from transformers import DistilBertTokenizer, DistilBertForSequenceClassification, Trainer, TrainingArguments
-from torch.utils.data import Dataset
+from sentence_transformers import SentenceTransformer, InputExample, losses
+from torch.utils.data import DataLoader
 
-# Dataset class
-class QueryDataset(Dataset):
-    def __init__(self, queries, labels, tokenizer, max_len=128):
-        self.queries = queries
-        self.labels = labels
-        self.tokenizer = tokenizer
-        self.max_len = max_len
+# Short instruction: If there is a need to retrain the model further, install these dependancies above, update the train.csv and run this file.
+# train.csv format is as follows: "Query or a question", <answer_id>. example:
+# "Restarting a Linux service?", 1
+# "What is the way to restart a service?", 1
 
-    def __len__(self):
-        return len(self.queries)
+# Load your training data
+def load_data(csv_file):
+    """
+    Loads training data from a CSV file with columns `query` and `answer_id`.
+    """
+    data = pd.read_csv(csv_file)
+    examples = [
+        InputExample(texts=[row['query']], label=row['answer_id'])
+        for _, row in data.iterrows()
+    ]
+    return examples
 
-    def __getitem__(self, idx):
-        query = self.queries[idx]
-        label = self.labels[idx]
-        encoding = self.tokenizer(query, truncation=True, padding="max_length", max_length=self.max_len, return_tensors="pt")
-        return {
-            "input_ids": encoding["input_ids"].squeeze(0),
-            "attention_mask": encoding["attention_mask"].squeeze(0),
-            "labels": torch.tensor(label, dtype=torch.long)
-        }
+def fine_tune_sbert(train_data_file, model_name="all-MiniLM-L6-v2", output_dir="./fine_tuned_model", epochs=4, batch_size=16):
+    """
+    Fine-tunes the SBERT model using the provided training data.
+    """
+    # Load the pre-trained SBERT model
+    model = SentenceTransformer(model_name)
 
-# Load the dataset
-data = pd.read_csv("train.csv")
+    # Load training data
+    train_examples = load_data(train_data_file)
 
-# Adjust labels to be zero-indexed
-data["answer_id"] = data["answer_id"] - 1  # Adjust to start from 0
-queries = data["query"].tolist()
-labels = data["answer_id"].tolist()
+    # Create a DataLoader for the training examples
+    train_dataloader = DataLoader(train_examples, shuffle=True, batch_size=batch_size)
 
-# Split into training and validation sets
-train_queries, val_queries, train_labels, val_labels = train_test_split(queries, labels, test_size=0.2, random_state=42)
+    # Define the loss function
+    train_loss = losses.CosineSimilarityLoss(model=model)
 
-# Initialize tokenizer and model
-tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
-model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=50)
+    # Train the model
+    print("Starting training...")
+    model.fit(
+        train_objectives=[(train_dataloader, train_loss)],
+        epochs=epochs,
+        warmup_steps=int(0.1 * len(train_dataloader) * epochs),
+        output_path=output_dir
+    )
+    print(f"Model fine-tuned and saved to {output_dir}.")
 
-# Prepare datasets
-train_dataset = QueryDataset(train_queries, train_labels, tokenizer)
-val_dataset = QueryDataset(val_queries, val_labels, tokenizer)
+if __name__ == "__main__":
+    # Define the path to your training data
+    train_csv_path = "train.csv"  # Replace with your actual CSV file path
 
-# Define training arguments
-training_args = TrainingArguments(
-    output_dir="./model",
-    num_train_epochs=3,
-    per_device_train_batch_size=8,
-    per_device_eval_batch_size=8,
-    warmup_steps=500,
-    weight_decay=0.01,
-    logging_dir="./logs",
-    logging_steps=10,
-    eval_strategy="epoch",  # Changed from evaluation_strategy
-    save_strategy="epoch",
-    load_best_model_at_end=True
-)
-
-# Trainer instance
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=train_dataset,
-    eval_dataset=val_dataset
-)
-
-# Fine-tune the model
-trainer.train()
-
-# Save the fine-tuned model and tokenizer
-model.save_pretrained("./fine_tuned_model")
-tokenizer.save_pretrained("./fine_tuned_model")
+    # Fine-tune the model
+    fine_tune_sbert(
+        train_data_file=train_csv_path,
+        model_name="all-MiniLM-L6-v2",  # You can change to another SBERT model
+        output_dir="./fine_tuned_model",
+        epochs=4,
+        batch_size=16
+    )

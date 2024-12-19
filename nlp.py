@@ -1,10 +1,15 @@
 from sentence_transformers import SentenceTransformer, util
 import json
+import os
 
 class TaskFinder:
-    def __init__(self, tasks_file):
-        # Load the SBERT model
-        self.model = SentenceTransformer('all-MiniLM-L6-v2')
+    def __init__(self, tasks_file, fine_tuned_model_path="fine_tuned_model"):
+        
+        # Check if retrained model exists
+        if os.path.exists(fine_tuned_model_path):
+            self.model = SentenceTransformer(fine_tuned_model_path)
+        else:
+            self.model = SentenceTransformer('all-MiniLM-L6-v2')
 
         # Load the tasks from the JSON file
         with open(tasks_file, "r") as f:
