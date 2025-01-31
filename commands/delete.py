@@ -1,7 +1,5 @@
 from discord.ext import commands
-from database import Database
-
-db = Database("servers.db")
+from database import db
 
 @commands.command(name="delete")
 async def delete_command(ctx, name):

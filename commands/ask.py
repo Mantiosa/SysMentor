@@ -1,16 +1,11 @@
 from discord.ext import commands
 from nlp import TaskFinder
 
-# Initialize the TaskFinder with the tasks.json file
 task_finder = TaskFinder("tasks.json")
 
 @commands.command(name="ask")
 async def ask_command(ctx, *, question):
-    """
-    Processes a user's question and provides an answer based on SBERT's semantic similarity.
-    """
     try:
-        # Use TaskFinder to find the best match
         best_task = task_finder.find_best_match(question)
         
         if best_task:

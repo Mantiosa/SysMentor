@@ -1,12 +1,7 @@
-# commands/bash.py
-
 from discord.ext import commands
 import paramiko
-from database import Database
+from database import db
 
-db = Database("servers.db")
-
-# Store active SSH sessions with metadata
 active_sessions = {}
 
 @commands.command(name="bash")

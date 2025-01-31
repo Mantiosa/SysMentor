@@ -3,14 +3,12 @@ import os
 from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
-ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY").encode()  # Load the encryption key from .env
+ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY").encode()
 cipher = Fernet(ENCRYPTION_KEY)
-
 class Database:
-    def __init__(self, db_name):
-        self.conn = sqlite3.connect(db_name)
+    def __init__(self, db_name=":memory:"):
+        self.conn = sqlite3.connect(db_name, check_same_thread=False)
         self.create_table()
 
     def create_table(self):
@@ -62,3 +60,5 @@ class Database:
         self.conn.execute(query, (user_id, name))
         self.conn.commit()
         return self.conn.total_changes > 0
+
+db = Database()

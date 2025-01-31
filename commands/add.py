@@ -1,34 +1,23 @@
 import hashlib
 import discord
 from discord.ext import commands
-from database import Database
-
-db = Database("servers.db")
+from database import db
 
 @commands.command(name="add")
 async def add_command(ctx, name, ip, ssh_user, ssh_password, port: int = 22):
-    """
-    Adds a server to the database after simple validation.
-    """
-    # Validation for name
+    # Validations
     if not name.strip():
         await ctx.send("Error: Server name cannot be empty.")
         return
     if db.get_server(ctx.author.id, name):
         await ctx.send(f"Error: A server with the name '{name}' already exists.")
         return
-
-    # Validation for IP
     if not ip.strip() or len(ip.split(".")) != 4:  # Check for basic IPv4 format
         await ctx.send("Error: Invalid IP address format. Use IPv4 format (e.g., 192.168.1.1).")
         return
-
-    # Validation for SSH user
     if not ssh_user.strip():
         await ctx.send("Error: SSH username cannot be empty.")
         return
-
-    # Validation for SSH password
     if not ssh_password.strip():
         await ctx.send("Error: SSH password cannot be empty.")
         return
@@ -36,7 +25,6 @@ async def add_command(ctx, name, ip, ssh_user, ssh_password, port: int = 22):
     
     if db.add_server(ctx.author.id, name, ip, ssh_user, ssh_password, port):
         await ctx.send(f"Server '{name}' added successfully on port {port}!")
-        # Delete the user's original message
         try:
             await ctx.message.delete()
             await ctx.send("Your message containing server details has been deleted for security.")

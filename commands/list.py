@@ -1,7 +1,5 @@
 from discord.ext import commands
-from database import Database
-
-db = Database("servers.db")
+from database import db
 
 @commands.command(name="list")
 async def list_command(ctx):

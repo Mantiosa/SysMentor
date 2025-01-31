@@ -5,13 +5,11 @@ import os
 class TaskFinder:
     def __init__(self, tasks_file, fine_tuned_model_path="fine_tuned_model"):
         
-        # Check if retrained model exists
         if os.path.exists(fine_tuned_model_path):
             self.model = SentenceTransformer(fine_tuned_model_path)
         else:
             self.model = SentenceTransformer('all-MiniLM-L6-v2')
 
-        # Load the tasks from the JSON file
         with open(tasks_file, "r") as f:
             self.tasks = json.load(f)
 
@@ -22,9 +20,6 @@ class TaskFinder:
         ]
 
     def find_best_match(self, query):
-        """
-        Find the best matching task for a given query using SBERT.
-        """
         try:
             # Encode the user query
             query_embedding = self.model.encode(query)
@@ -39,7 +34,6 @@ class TaskFinder:
             best_match_idx = similarities.index(max(similarities))
             best_task = self.tasks[best_match_idx]
 
-            # Return the best matching task
             return best_task
         except Exception as e:
             print(f"Error finding best match: {e}")

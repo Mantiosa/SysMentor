@@ -5342,9 +5342,9 @@
     },
     {
         "id": 890,
-        "tags": ["rename", "pad numbers"],
-        "question": "How do I pad numbers in filenames with zeros using rename?",
-        "answer": "Use a regex, e.g.: rename 's/(\d+)/sprintf(\"%03d\",$1)/e' *"
+        "tags": ["rename", "lowercase"],
+        "question": "How do I rename all files in a directory to lowercase?",
+        "answer": "Use: rename 'y/A-Z/a-z/' *"
     },
     {
         "id": 891,
@@ -5480,9 +5480,9 @@
     },
     {
         "id": 913,
-        "tags": ["rename", "lowercase extension"],
-        "question": "How do I change all file extensions from .JPG to .jpg?",
-        "answer": "Use: rename 's/\.JPG$/.jpg/i' *"
+        "tags": ["mv", "script", "batch"],
+        "question": "How do I rename all files in a directory to remove spaces in their names?",
+        "answer": "Use: for file in *; do mv \"$file\" \"${file// /_}\"; done"
     },
     {
         "id": 914,

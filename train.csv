@@ -1,201 +1,201 @@
 query,answer_id
-"How do I restart a service?",1
-"Command to restart a service?",1
-"Restart a service in Linux?",1
-"How to restart a systemd service?",1
-"How do I check disk space usage?",2
-"Command to check disk space?",2
-"Disk usage in Linux?",2
-"How to see free disk space?",2
-"How do I monitor CPU usage?",3
-"Command for CPU usage monitoring?",3
-"Check CPU usage in Linux?",3
-"How to see CPU load?",3
-"How do I check memory usage?",4
-"Command to see memory usage?",4
-"Check RAM usage in Linux?",4
-"How to monitor memory consumption?",4
-"How do I find my IP address?",5
-"Command to check IP address?",5
-"View my network address?",5
-"How to find system IP?",5
-"How do I change the hostname?",6
-"Command to change hostname?",6
-"Set a new hostname?",6
-"How to rename the system?",6
-"How do I add a new user?",7
-"Command to add a user?",7
-"How to delete a user?",7
-"Command to remove a user?",7
-"How do I change file permissions?",8
-"Command to change permissions?",8
-"Set file permissions in Linux?",8
-"How to use chmod?",8
-"How do I kill a process?",9
-"Command to kill a process?",9
-"Terminate a process in Linux?",9
-"How to stop a running process?",9
-"How do I update packages?",10
-"Command to update Linux?",10
-"How to upgrade packages?",10
-"Command for system upgrade?",10
-"How do I view system logs?",11
-"Command to check logs?",11
-"Where are Linux logs stored?",11
-"How to use journalctl?",11
-"How do I connect via SSH?",12
-"Command to SSH into a server?",12
-"How to access a server remotely?",12
-"How to use SSH?",12
-"How do I allow a port in UFW?",13
-"Command to allow ports in UFW?",13
-"How to manage firewall rules?",13
-"How to block a port?",13
-"How do I schedule a cron job?",14
-"Command to edit cron jobs?",14
-"How to add a scheduled task?",14
-"How to use crontab?",14
-"How do I check folder size?",15
-"Command to check directory usage?",15
-"How to see disk usage of a folder?",15
-"Command for folder size in Linux?",15
-"How do I search for a file?",16
-"Command to find a file?",16
-"Search for files in Linux?",16
-"How to locate a file?",16
-"How do I install a package?",17
-"Command to install packages?",17
-"Install software in Linux?",17
-"How to use apt install?",17
-"How do I generate SSH keys?",18
-"Command to create SSH keys?",18
-"How to create a key pair?",18
-"Generate keys for SSH?",18
-"How do I list running services?",19
-"Command to list services?",19
-"How to check active services?",19
-"View system services?",19
-"How do I give sudo permissions?",20
-"Command to add sudo privileges?",20
-"How to grant sudo access?",20
-"Add a user to sudo group?",20
-"How do I create an alias?",21
-"Command to set command shortcuts?",21
-"How to define an alias in Linux?",21
-"Create a command alias?",21
-"How do I list processes?",22
-"Command to monitor processes?",22
-"How to use ps command?",22
-"Check running processes in Linux?",22
-"How do I mount a drive?",23
-"Command to mount storage?",23
-"How to mount a disk in Linux?",23
-"Mount a filesystem in Linux?",23
-"How do I remove a package?",24
-"Command to uninstall software?",24
-"How to remove software in Linux?",24
-"How to use apt remove?",24
-"How do I list Docker containers?",25
-"Command to see running containers?",25
-"Check Docker container status?",25
-"List active Docker containers?",25
-"How do I set environment variables?",26
-"Command to export variables?",26
-"How to define environment variables?",26
-"Set env variables in Linux?",26
-"How do I check the kernel version?",27
-"Command for Linux kernel version?",27
-"Check OS version in Linux?",27
-"Find kernel details in Linux?",27
-"How do I change file ownership?",28
-"Command to change ownership?",28
-"Set file owner in Linux?",28
-"Use chown in Linux?",28
-"How do I run a background process?",29
-"Command to run tasks in background?",29
-"Start a background job in Linux?",29
-"Use & for background tasks?",29
-"How do I view the end of a file?",30
-"Command to check file logs?",30
-"View last lines of a file?",30
-"Use tail command in Linux?",30
-"How do I check kernel errors?",31
-"Command to see system errors?",31
-"Check for crashes in Linux?",31
-"Use dmesg for error logs?",31
-"How do I ping a host?",32
-"Command to test network?",32
-"Check connectivity to a server?",32
-"How to use ping?",32
-"How do I check open network ports?",33
-"Command to list open ports?",33
-"View open ports on my system?",33
-"How to see listening network ports?",33
-"How do I list disk partitions?",34
-"Command to view partitions?",34
-"Check partitions in Linux?",34
-"How to use fdisk to list disks?",34
-"How do I monitor disk usage in real-time?",35
-"Command for real-time disk usage?",35
-"Check disk activity live?",35
-"Use iotop to monitor disk IO?",35
-"How do I monitor network bandwidth usage?",36
-"Command to check network usage?",36
-"Track bandwidth in real-time?",36
-"How to use iftop for monitoring?",36
-"How do I extract a tar.gz file?",37
-"Command to unpack a tar.gz?",37
-"Extract files from an archive?",37
-"How to untar a compressed file?",37
-"How do I create a tar.gz archive?",38
-"Command to compress files?",38
-"Make an archive in Linux?",38
-"How to use tar to compress files?",38
-"How do I update packages using YUM?",39
-"Command for YUM update?",39
-"How to upgrade software with YUM?",39
-"Update packages with yum?",39
-"How do I stop a service?",40
-"Command to stop a Linux service?",40
-"How to disable a service temporarily?",40
-"Stop a running service with systemctl?",40
-"How do I check the status of a service?",41
-"Command to view service status?",41
-"Check if a service is running?",41
-"Use systemctl to check service health?",41
-"How do I move a file to another directory?",42
-"Command to move a file?",42
-"Transfer a file to a new folder?",42
-"Use mv to move files?",42
-"How do I copy a file?",43
-"Command to duplicate a file?",43
-"How to copy files in Linux?",43
-"Use cp command for copying?",43
-"How do I delete a file?",44
-"Command to remove a file?",44
-"How to delete files in Linux?",44
-"Use rm to remove files?",44
-"How do I create a directory?",45
-"Command to make a new folder?",45
-"Create a directory in Linux?",45
-"Use mkdir to add a folder?",45
-"How do I delete an empty directory?",46
-"Command to remove a folder?",46
-"How to delete empty directories?",46
-"Use rmdir to clean up folders?",46
-"How do I delete a directory with contents?",47
-"Command to recursively delete a directory?",47
-"Remove a folder and its files?",47
-"Use rm -r to clean up a directory?",47
-"How do I synchronize system time?",48
-"Command to sync time in Linux?",48
-"Set time synchronization on Linux?",48
-"Use timedatectl to sync time?",48
-"How do I view the contents of a file?",49
-"Command to read a file in Linux?",49
-"View text file content?",49
-"Use cat command to display a file?",49
-"How do I edit a file?",50
-"Command to open a file for editing?",50
-"Modify text files in Linux?",50
-"Use nano or vim to edit a file?",50
+"How do I restart a service?",0
+"Command to restart a service?",0
+"Restart a service in Linux?",0
+"How to restart a systemd service?",0
+"How do I check disk space usage?",1
+"Command to check disk space?",1
+"Disk usage in Linux?",1
+"How to see free disk space?",1
+"How do I monitor CPU usage?",2
+"Command for CPU usage monitoring?",2
+"Check CPU usage in Linux?",2
+"How to see CPU load?",2
+"How do I check memory usage?",3
+"Command to see memory usage?",3
+"Check RAM usage in Linux?",3
+"How to monitor memory consumption?",3
+"How do I find my IP address?",4
+"Command to check IP address?",4
+"View my network address?",4
+"How to find system IP?",4
+"How do I change the hostname?",5
+"Command to change hostname?",5
+"Set a new hostname?",5
+"How to rename the system?",5
+"How do I add a new user?",6
+"Command to add a user?",6
+"How to delete a user?",6
+"Command to remove a user?",6
+"How do I change file permissions?",7
+"Command to change permissions?",7
+"Set file permissions in Linux?",7
+"How to use chmod?",7
+"How do I kill a process?",8
+"Command to kill a process?",8
+"Terminate a process in Linux?",8
+"How to stop a running process?",8
+"How do I update packages?",9
+"Command to update Linux?",9
+"How to upgrade packages?",9
+"Command for system upgrade?",9
+"How do I view system logs?",10
+"Command to check logs?",10
+"Where are Linux logs stored?",10
+"How to use journalctl?",10
+"How do I connect via SSH?",11
+"Command to SSH into a server?",11
+"How to access a server remotely?",11
+"How to use SSH?",11
+"How do I allow a port in UFW?",12
+"Command to allow ports in UFW?",12
+"How to manage firewall rules?",12
+"How to block a port?",12
+"How do I schedule a cron job?",13
+"Command to edit cron jobs?",13
+"How to add a scheduled task?",13
+"How to use crontab?",13
+"How do I check folder size?",14
+"Command to check directory usage?",14
+"How to see disk usage of a folder?",14
+"Command for folder size in Linux?",14
+"How do I search for a file?",15
+"Command to find a file?",15
+"Search for files in Linux?",15
+"How to locate a file?",15
+"How do I install a package?",16
+"Command to install packages?",16
+"Install software in Linux?",16
+"How to use apt install?",16
+"How do I generate SSH keys?",17
+"Command to create SSH keys?",17
+"How to create a key pair?",17
+"Generate keys for SSH?",17
+"How do I list running services?",18
+"Command to list services?",18
+"How to check active services?",18
+"View system services?",18
+"How do I give sudo permissions?",19
+"Command to add sudo privileges?",19
+"How to grant sudo access?",19
+"Add a user to sudo group?",19
+"How do I create an alias?",20
+"Command to set command shortcuts?",20
+"How to define an alias in Linux?",20
+"Create a command alias?",20
+"How do I list processes?",21
+"Command to monitor processes?",21
+"How to use ps command?",21
+"Check running processes in Linux?",21
+"How do I mount a drive?",22
+"Command to mount storage?",22
+"How to mount a disk in Linux?",22
+"Mount a filesystem in Linux?",22
+"How do I remove a package?",23
+"Command to uninstall software?",23
+"How to remove software in Linux?",23
+"How to use apt remove?",23
+"How do I list Docker containers?",24
+"Command to see running containers?",24
+"Check Docker container status?",24
+"List active Docker containers?",24
+"How do I set environment variables?",25
+"Command to export variables?",25
+"How to define environment variables?",25
+"Set env variables in Linux?",25
+"How do I check the kernel version?",26
+"Command for Linux kernel version?",26
+"Check OS version in Linux?",26
+"Find kernel details in Linux?",26
+"How do I change file ownership?",27
+"Command to change ownership?",27
+"Set file owner in Linux?",27
+"Use chown in Linux?",27
+"How do I run a background process?",28
+"Command to run tasks in background?",28
+"Start a background job in Linux?",28
+"Use & for background tasks?",28
+"How do I view the end of a file?",29
+"Command to check file logs?",29
+"View last lines of a file?",29
+"Use tail command in Linux?",29
+"How do I check kernel errors?",30
+"Command to see system errors?",30
+"Check for crashes in Linux?",30
+"Use dmesg for error logs?",30
+"How do I ping a host?",31
+"Command to test network?",31
+"Check connectivity to a server?",31
+"How to use ping?",31
+"How do I check open network ports?",32
+"Command to list open ports?",32
+"View open ports on my system?",32
+"How to see listening network ports?",32
+"How do I list disk partitions?",33
+"Command to view partitions?",33
+"Check partitions in Linux?",33
+"How to use fdisk to list disks?",33
+"How do I monitor disk usage in real-time?",34
+"Command for real-time disk usage?",34
+"Check disk activity live?",34
+"Use iotop to monitor disk IO?",34
+"How do I monitor network bandwidth usage?",35
+"Command to check network usage?",35
+"Track bandwidth in real-time?",35
+"How to use iftop for monitoring?",35
+"How do I extract a tar.gz file?",36
+"Command to unpack a tar.gz?",36
+"Extract files from an archive?",36
+"How to untar a compressed file?",36
+"How do I create a tar.gz archive?",37
+"Command to compress files?",37
+"Make an archive in Linux?",37
+"How to use tar to compress files?",37
+"How do I update packages using YUM?",38
+"Command for YUM update?",38
+"How to upgrade software with YUM?",38
+"Update packages with yum?",38
+"How do I stop a service?",39
+"Command to stop a Linux service?",39
+"How to disable a service temporarily?",39
+"Stop a running service with systemctl?",39
+"How do I check the status of a service?",40
+"Command to view service status?",40
+"Check if a service is running?",40
+"Use systemctl to check service health?",40
+"How do I move a file to another directory?",41
+"Command to move a file?",41
+"Transfer a file to a new folder?",41
+"Use mv to move files?",41
+"How do I copy a file?",42
+"Command to duplicate a file?",42
+"How to copy files in Linux?",42
+"Use cp command for copying?",42
+"How do I delete a file?",43
+"Command to remove a file?",43
+"How to delete files in Linux?",43
+"Use rm to remove files?",43
+"How do I create a directory?",44
+"Command to make a new folder?",44
+"Create a directory in Linux?",44
+"Use mkdir to add a folder?",44
+"How do I delete an empty directory?",45
+"Command to remove a folder?",45
+"How to delete empty directories?",45
+"Use rmdir to clean up folders?",45
+"How do I delete a directory with contents?",46
+"Command to recursively delete a directory?",46
+"Remove a folder and its files?",46
+"Use rm -r to clean up a directory?",46
+"How do I synchronize system time?",47
+"Command to sync time in Linux?",47
+"Set time synchronization on Linux?",47
+"Use timedatectl to sync time?",47
+"How do I view the contents of a file?",48
+"Command to read a file in Linux?",48
+"View text file content?",48
+"Use cat command to display a file?",48
+"How do I edit a file?",49
+"Command to open a file for editing?",49
+"Modify text files in Linux?",49
+"Use nano or vim to edit a file?",49
